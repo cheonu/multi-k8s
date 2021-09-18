@@ -21,3 +21,15 @@ after_success:
   - docker push cheonu/multi-nginx
   - docker push cheonu/multi-server
   - docker push cheonu/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker 
+  env: Multidocker1-env
+  bucketname: elasticbeanstalk-us-east-2-898635122151
+  bucketpath: docker-multi 
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY    
