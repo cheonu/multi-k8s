@@ -14,3 +14,9 @@ before_install:
   - docker build -t cheonu/react-test -f ./client/Dockerfile.dev .
 script:
   - docker run -e CI=true cheonu/react-test npm test
+
+deploy:
+  provider: script
+  script: bash./deploy.sh
+  on:
+    branch: master
